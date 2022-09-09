@@ -104,14 +104,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "JongyunHa"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "KakaoStyle backend engineer"
+  location         : "Seoul"
+  email            : "neimen.95@kakaostyle.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
+      neimen.95@kakaostyle.com
       # url: "mailto:your.name@email.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -140,7 +141,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      https://github.com/nothingprogram
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
