@@ -1,9 +1,10 @@
 ---
 title: Contact
-author: Tao He
-date: 2022-02-05
-category: Jekyll
+author: JongyunHa
+date: 2022-12-03
+category: contact
 layout: post
 ---
 
-This is an contact page.
+email: gkwhddbs9999@gmail.com
+github: https://github.com/jongyunha
