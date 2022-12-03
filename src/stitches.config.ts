@@ -17,9 +17,9 @@ export const { styled, css, getCssText, createTheme, globalCss } = createStitche
       yellowAccent: '#ffa659',
 
       primary100: '#edeafc',
-      primary200: '#bcb2f5',
-      primary300: '#816eec',
-      primary400: '#3b1de2',
+      primary200: '#039be5',
+      primary300: '#006db3',
+      primary400: '#006db3',
       primary500: '#24128a',
 
       text100: '$gray300',

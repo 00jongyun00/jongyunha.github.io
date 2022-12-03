@@ -1,9 +1,7 @@
-import { Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { memo, PropsWithChildren } from 'react';
 
 import { useAuthorProfile } from '~/hooks/useAuthorProfile';
-import { useCheckAboutPage } from '~/hooks/useCheckAboutPage';
 
 import { Container, ExternalLinks, LinkItem, Name, Description, Wrapper } from './styles';
 
@@ -32,7 +30,7 @@ interface SocialLink {
 
 const Profile = () => {
   const siteMetadata = useAuthorProfile().site?.siteMetadata;
-  const isAboutPageExists = useCheckAboutPage();
+  // const isAboutPageExists = useCheckAboutPage();
 
   const author = siteMetadata?.author;
   const description = siteMetadata?.description;
@@ -67,7 +65,7 @@ const Profile = () => {
         className='profile-image'
         layout='fixed'
         formats={['auto', 'webp', 'avif']}
-        src='../../images/profile-pic.jpeg'
+        src='../../images/jongyun.png'
         width={70}
         height={70}
         quality={95}
@@ -81,14 +79,13 @@ const Profile = () => {
         <Description>{description}</Description>
 
         <ExternalLinks>
-          {isAboutPageExists &&
-              <LinkItem>
-                <Link to={'/about'}>About</Link>
-              </LinkItem>
-          }
+          {/*{isAboutPageExists &&*/}
+          {/*    <LinkItem>*/}
+          {/*      <Link to={'/about'}>About</Link>*/}
+          {/*    </LinkItem>*/}
+          {/*}*/}
           {Object.entries(social ?? {}).map(([key, username]) => {
             const serviceName = key as keyof GatsbyTypes.Social;
-
             return (
               <ExternalLink key={serviceName} username={username} urlPrefix={socialLinks[serviceName].url}>
                 {socialLinks[serviceName].text}

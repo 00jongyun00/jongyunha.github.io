@@ -1,8 +1,8 @@
-import React, { ChangeEventHandler, memo, MouseEvent, useCallback } from 'react';
+import React, { ChangeEventHandler, memo } from 'react';
 
-import { TAG } from '~/constants';
+// import { TAG } from '~/constants';
 
-import { Container, Title, TagListWrapper, Tag, Input } from './styles';
+import { Container, Title, TagListWrapper, Input } from './styles';
 
 interface Props {
   tags: string[];
@@ -12,12 +12,12 @@ interface Props {
   setCurrentTag: (tag: string) => void;
 }
 
-const ArticleFilter = ({ tags, currentTag, setCurrentTag, titleFilter, onTitleFilterChange }: Props) => {
-  const onClickTag = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    const tag = (e.target as HTMLButtonElement).dataset['tag'] as string;
-
-    setCurrentTag(tag);
-  }, [setCurrentTag]);
+const ArticleFilter = ({ titleFilter, onTitleFilterChange }: Props) => {
+  // const onClickTag = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+  //   const tag = (e.target as HTMLButtonElement).dataset['tag'] as string;
+  //
+  //   setCurrentTag(tag);
+  // }, [setCurrentTag]);
 
   return (
     <Container>
@@ -29,25 +29,25 @@ const ArticleFilter = ({ tags, currentTag, setCurrentTag, titleFilter, onTitleFi
         onChange={onTitleFilterChange}
       />
       <TagListWrapper>
-        <Tag
-          type='button'
-          data-tag={TAG.ALL}
-          onClick={onClickTag}
-          filtered={currentTag === TAG.ALL}
-        >
-          { TAG.ALL }
-        </Tag>
-        {tags.map((tag) => (
-          <Tag
-            type='button'
-            key={tag}
-            data-tag={tag}
-            onClick={onClickTag}
-            filtered={currentTag === tag}
-          >
-            { tag }
-          </Tag>
-        ))}
+        {/*<Tag*/}
+        {/*  type='button'*/}
+        {/*  data-tag={TAG.ALL}*/}
+        {/*  onClick={onClickTag}*/}
+        {/*  filtered={currentTag === TAG.ALL}*/}
+        {/*>*/}
+        {/*  { TAG.ALL }*/}
+        {/*</Tag>*/}
+        {/*{tags.map((tag) => (*/}
+        {/*  // <Tag*/}
+        {/*  //   type='button'*/}
+        {/*  //   key={tag}*/}
+        {/*  //   data-tag={tag}*/}
+        {/*  //   onClick={onClickTag}*/}
+        {/*  //   filtered={currentTag === tag}*/}
+        {/*  // >*/}
+        {/*  //   { tag }*/}
+        {/*  // </Tag>*/}
+        {/*))}*/}
       </TagListWrapper>
     </Container>
   );
