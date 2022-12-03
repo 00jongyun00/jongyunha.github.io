@@ -1,180 +1,156 @@
----
-layout: home
-title: Jekyll Gitbook Theme
-permalink: /
----
+# [YAMT - Yet Another Minimal Theme](https://yamt.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/249c3da6-7b23-4b57-915d-71934329e306/deploy-status)](https://yamt.netlify.app/)
+![](https://badgen.net/rubygems/dt/jekyll-yamt)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/PandaSekh/Jekyll-YAMT/issues)
+![GitHub forks](https://img.shields.io/github/forks/PandaSekh/Jekyll-YAMT?label=Fork%20it%21&style=social)
+## [Live Demo](https://yamt.netlify.app/)
 
-Make Jelly site have a GitBook look!
+![Homepage](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot.png?raw=true)
 
-## Demo
+YAMT is a minimal [Jekyll](http://jekyllrb.com) theme focused on simplicity and ease-of-use. It has great modularity, allowing you to easily decide what you actually want on your website.
 
-Live demo on Github Pages: [https://sighingnow.github.io/jekyll-gitbook](https://sighingnow.github.io/jekyll-gitbook)
+## Contents
 
-[![Jekyll Themes](https://img.shields.io/badge/featured%20on-JekyllThemes-red.svg)](https://jekyll-themes.com/jekyll-gitbook/)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Customize](#options)
+  - [Basics](#Basics)
+  - [Typography](#Typography)
+  - [Header](#header)
+  - [Home](#home)
+  - [Post](#post)
+  - [Contact Form](#contact-form)
+- [Development](#development)
+- [Credits](#credits)
+- [License](#license)
 
-## Why Jekyll with GitBook
+## Features
 
-GitBook is an amazing frontend style to present and organize contents (such as book chapters
-and blogs) on Web. The typical to deploy GitBook at [Github Pages][1]
-is building HTML files locally and then push to Github repository, usually to the `gh-pages`
-branch. It's quite annoying to repeat such workload and make it hard for people do version
-control via git for when there are generated HTML files to be staged in and out.
+- Minimal and clean design.
+- Fully modular: activate and load only what you really need.
+- Works great on mobile and smaller screens.
+- Works on Github Pages.
+- Supports [Disqus](https://disqus.com/) comments activated only on button press, if you activate them.
+- [Google Analytics](https://www.google.com/analytics/) support.
+- [Open Graph](https://ogp.me/) and [Twitter Cards](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started) support to better index the website content on search engines and social networks.
+- [MathJAX](https://www.mathjax.org/) and [LaTeX](https://www.latex-project.org/) optional support. Write beautiful math!
+- [RSS](https://github.com/jekyll/jekyll-feed) support.
+- Beautiful [Syntax Highlight](https://yamt.netlify.app/2020/05/19/special-formatting.html#syntax-highlight). Write some code and show it in a graceful way.
 
-This theme takes style definition out of generated GitBook site and provided the template
-for Jekyll to rendering markdown documents to HTML, thus the whole site can be deployed
-to [Github Pages][1] without generating and uploading HTML bundle every time when there are
-changes to the original repo.
+## Screenshots
 
-## How to Get Started
+Mobile:  
+![Mobile](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot_mobile.png?raw=true)
 
-This theme can be used just as other [Jekyll themes][1] and support [remote theme][12],
-see [the official guide][13] as well.
+Code Highlight:  
+![Code](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot_code_highlight.png)
 
-You can introduce this jekyll theme into your own site by either
+Minimal:  
+![Minimal](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot_minimal.png?raw=true)
 
-- [Fork][3] this repository and add your markdown posts to the `_posts` folder.
-- Use as a remote theme in your [`_config.yml`][14](just like what we do for this
-  site itself),
+## Installation
 
-```yaml
-remote_theme: sighingnow/jekyll-gitbook
-```
+There are four way to use YAMT: Netlify (suggested, as this theme has a contact module built-in working only on Netlify), Github Pages, as a gem-based theme, by forking this repo or by copying all the files into your directory.
 
-### Deploy Locally with Jekyll Serve
+### Download the files
+You can [download the files](https://github.com/PandaSekh/Jekyll-YAMT/releases/latest) and add them in your directory to start working.
 
-This theme can be ran locally using Ruby and Gemfiles.
+### Netlify
 
-[Testing your GitHub Pages site locally with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) - GitHub
+1. [Fork this repo](https://github.com/PandaSekh/Jekyll-YAMT/generate). You can copy only master, set it to private or public and name it however you want.
+2. Go to [Netlify](https://app.netlify.com/), create a New site from Git, choose your repo or all repos, no difference. Back to Netlify, select the recently forked repo.
+3. Owner and branch are good to go. In build command write `bundle exec jekyll build` and publishing directory should be `_site/`.
+4. Deploy. Your site will shortly be available. Under domain settings you can change your subdomain, or add a primary level one. 
 
-## Full-text search
+### Github Pages
 
-The search functionality in jekyll-gitbook theme is powered by the [gitbook-plugin-search-pro][5] plugin and is enabled by default.
+Github Pages uses the [--safe flag](https://jekyllrb.com/docs/configuration/options/) to build jekyll websites, which disable custom plugins, caching to disk and ignore symbolic links. Because of that, I suggest you to use any other method. Netlify works great with a 5 minute config, so I suggest you use it.
 
-[https://sighingnow.github.io/jekyll-gitbook/?q=generated](https://sighingnow.github.io/jekyll-gitbook/?q=generated)
+1. [Fork this repo](https://github.com/PandaSekh/Jekyll-YAMT/generate).
+2. Create a new branch in your repo and call it `gh-pages`.
+3. Publish your website and choose gh-pages as the target branch.
 
-## Code highlight
+### Remote theme
 
-The code highlight style is configurable the following entry in `_config.yaml`:
+[Follow these instructions](https://help.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-using-jekyll).
 
-```yaml
-syntax_highlighter_style: colorful
-```
+### Gem-based theme 
+1. Add this line to your Jekyll site's `Gemfile`:
 
-The default code highlight style is `colorful`, the full supported styles can be found from [the rouge repository][6]. Customized
-style can be added to [./assets/gitbook/rouge/](./assets/gitbook/rouge/).
+    ```ruby
+    gem "jekyll-yamt"
+    ```
 
-## How to generate TOC
+2. And add this line to your Jekyll site's `_config.yml`:
 
-The jekyll-gitbook theme leverages [jekyll-toc][4] to generate the *Contents* for the page.
-The TOC feature is not enabled by default. To use the TOC feature, modify the TOC
-configuration in `_config.yml`:
+    ```yaml
+    theme: jekyll-yamt
+    ```
 
-```yaml
-toc:
-    enabled: true
-    h_min: 1
-    h_max: 3
-```
+3. And then execute:
 
-## Google Analytics, etc.
+    ``` bash
+    $ bundle
+    ```
 
-The jekyll-gitboook theme supports embedding the [Google Analytics][7], [CNZZ][8] and [Application Insights][9] website analytical tools with the following
-minimal configuration in `_config.yaml`:
+4. Or install it yourself as:
+    
+    ``` bash
+    $ gem install jekyll-yamt
+    ```
 
-```yaml
-tracker:
-  google_analytics: "<YOUR GOOGLE ANALYTICS KEY, e.g, UA-xxxxxx-x>"
-```
+#### ERROR: There was an error while loading `jekyll-yamt.gemspec`: No such file or directory - git ls-files -z. Bundler cannot continue.
+If you encounter this error when running `bundle install`, please make sure git is installed.
 
-Similarly, CNZZ can be added with the following configuration in `_config.yaml`
+## Customize
 
-```yaml
-tracker:
-  cnzz: "<YOUR CNZZ ANALYTICS KEY, e.g., xxxxxxxx>"
-```
+YAMT is easily customizable. If you don't need a functionality, just deactivate it in `_data/settings.yml`.
+Most of the customizable things are self-explanatory and found in the `_data` folder and in the `_config.yml`.
 
-Application Insights can be added with the following configuration in `_config.yaml`
+### Basics
 
-```yaml
-tracker:
-  application_insights: "<YOUR APPLICATION INSIGHTS CONNECTION STRING>"
-```
+Under the `_data` folder there are three files: pages, settings and social.
+In pages you can add other pages that will show up in the nav-
+In social you can add your socials that will show up in the nav. To add a social, find a suitable icon on [FontAwesome](https://fontawesome.com/) and add it's name in the name tag.
+Brand defines Font Awesome's font type (fas is solid, fab is brand).
+Out of the box this theme has support colors for a bunch of social. If your social isn't supported, just add the color in the header.css 
 
-## Extra StyleSheet or Javascript elements
+In `_data/settings.yml` you can activate or deactivate various functions of the theme, like analytics, disqus comments, related posts and so on.
 
-You can add extra CSS or JavaScript references using configuration collections:
+### Typography
+By default YAMT uses the System Font STack, which greatly reduces load times. If you want to use the old Font Stack, in `assets/main.scss` change `typography` to `typography-old`.
 
-- extra_css: for additional style sheets. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-- extra_header_js: for additional scripts to be included in the `<head>` tag, after the `extra_css` has been added. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-- extra_footer_js: for additional scripts to be included at the end of the HTML document, just before the site tracking script. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
+### Header
+In `_data/settings.yml` you can choose to hide or show the subtitle, the page navigation or the social icons.
 
-## Customizing font settings
+### Home
+In `_data/settings.yml` you can choose to hide or show the posts infos (date and read-time) and the featured image.
 
-The fonts can be customized by modifying the `.book.font-family-0` and `.book.font-family-1` entry in [`./assets/gitbook/custom.css`][10],
+### Post
+In `_data/settings.yml` you can choose to hide or show the post infos, categories, related posts and comments.
+Note that by removing categories the Categories Archives will no longer be reachable.
 
-```css
-.book.font-family-0 {
-    font-family: Georgia, serif;
-}
-.book.font-family-1 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-```
+### Contact Form
+YAMT has a built-in contact form builded using [Netlify](https://app.netlify.com/) free form functionality. To make it work you only need the line `data-netlify="true"` when declaring a form.  
+If you don't want to use Netlify, remove the line `data-netlify="true"`.
 
-## Tips, Warnings and Dangers blocks
+## Development
 
-The jekyll-gitbook theme supports customized kramdown attributes (`{: .block-tip }`, `{: .block-warning }`,
-`{: .block-danger }`) like that displayed in [the discord.js website][11]. The marker can be used like
+[Contributions are welcomed and encouraged](https://github.com/PandaSekh/Jekyll-YAMT/issues).
 
-```markdown
-> ##### TIP
->
-> This guide is last tested with @napi-rs/canvas^0.1.20, so make sure you have
-> this or a similar version after installation.
-{: .block-tip }
-```
+To set up your environment to develop this theme, run `bundle install`.
 
-Rendered page can be previewed from
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html)
+When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in `yamt.gemspec` accordingly.
 
-## Cover image inside pages
-
-The jekyll-gitbook theme supports adding a cover image to a specific page by adding
-a `cover` field to the page metadata:
-
-```diff
-  ---
-  title: Page with cover image
-  author: Tao He
-  date: 2022-05-24
-  category: Jekyll
-  layout: post
-+ cover: /assets/jekyll-gitbook/dinosaur.gif
-  ---
-```
-
-The effect can be previewed from
-
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-05-24-page_cover.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-05-24-page_cover.html)
+## Credits
+Theme designed and created by [Alessio Franceschi](https://github.com/PandaSekh/).
+Inspired by [Lagrange by LeNPaul](https://lenpaul.github.io/Lagrange/).  
+Also great help from [this blog](https://blog.webjeda.com/), I've used this even before I created this theme.  
+Images from [Unsplash](https://unsplash.com/).
 
 ## License
-
-This work is open sourced under the Apache License, Version 2.0.
-
-Copyright 2019 Tao He.
-
-[1]: https://pages.github.com
-[2]: https://pages.github.com/themes
-[3]: https://github.com/sighingnow/jekyll-gitbook/fork
-[4]: https://github.com/allejo/jekyll-toc
-[5]: https://github.com/gitbook-plugins/gitbook-plugin-search-pro
-[6]: https://github.com/rouge-ruby/rouge/tree/master/lib/rouge/themes
-[7]: https://analytics.google.com/analytics/web/
-[8]: https://www.cnzz.com/
-[9]: https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
-[10]: https://github.com/sighingnow/jekyll-gitbook/blob/master/gitbook/custom.css
-[11]: https://discordjs.guide/popular-topics/canvas.html#setting-up-napi-rs-canvas
-[12]: https://rubygems.org/gems/jekyll-remote-theme
-[13]: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
-[14]: https://github.com/sighingnow/jekyll-gitbook/blob/master/_config.yml
+The theme is available as open source under the terms of the [MIT License](https://github.com/PandaSekh/Jekyll-YAMT/blob/master/LICENSE.txt).

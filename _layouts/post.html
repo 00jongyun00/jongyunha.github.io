@@ -1,67 +1,45 @@
-<!DOCTYPE HTML>
-<html lang="en" >
-    <head>
+<!doctype html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
 
-        {%- include head.html -%}
+<body>
 
-        {% if page.previous %}
-            <link rel="prev" href="{{site.baseurl}}{{page.previous.url}}" />
-        {% else %}
-            <link rel="prev" href="{{site.baseurl}}/" />
-        {% endif %}
+  <div class="container">
+    {% include header.html %}
 
-        {% if page.next %}
-            <link rel="next" href="{{site.baseurl}}{{page.next.url}}" />
-        {% endif %}
-    </head>
-    <body>
-        <div class="book">
+    <div class="post-container">
+      <article id = "post">
+        <h2 id = "post-title">{{ page.title }}</h2>
 
-            {%- include toc-date.html -%}
+  {% if site.data.settings.date-under-post.active %}
+  <div class = "post-info">
+    <span>
+        <i class="far fa-calendar" aria-hidden="true"></i> <span>{{ page.date | date_to_string }}</span> - <i class="far fa-clock"></i> {% include reading_time.html %}
+    </span>
+  </div>
+  {% endif %}
+        {{ content }}
+      </article>
+    </div>
+    {% if site.data.settings.categories.active %}
+      {% include categories.html %}
+    {% endif %}
 
-            <div class="book-body">
-                <div class="book-header" role="navigation">
-                    <!-- Title -->
-                    <h1>
-                        <i class="fa fa-circle-o-notch fa-spin"></i>
-                        {% if page.title %}
-                            <a href="." >{{ page.title | escape }}</a>
-                        {% else %}
-                            <a href="." >{{ site.title | escape }}</a>
-                        {% endif %}
-                    </h1>
-                </div>
+    {% if site.data.settings.related-posts.active %}
+      {% include related-posts.html %}
+    {% endif %}
 
-                <div class="body-inner">
-                    {%- include body.html -%}
+    {% if site.data.settings.comments %}
+      {% include comments.html %}
+    {% endif %}
+  </div>
 
-                    {% if page.previous %}
-                        <a href="{{site.baseurl}}{{page.previous.url}}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{page.previous.title}}">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                    {% else %}
-                        <a href="{{site.baseurl}}/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{site.title}}">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                    {% endif %}
+{%- include footer.html -%}
 
-                    {% if page.next %}
-                        <a href="{{site.baseurl}}{{page.next.url}}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{page.next.title}}">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-
-            <script>
-            var gitbook = gitbook || [];
-            gitbook.push(function() {
-                gitbook.page.hasChanged({%- include metadata-post.json.tpl -%});
-            });
-            </script>
-        </div>
-
-        {%- include footer.html -%}
-
-    </body>
+{% if site.data.settings.mathjax.active %}
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
+</body>
 </html>
