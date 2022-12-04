@@ -65,7 +65,7 @@ const Profile = () => {
         className='profile-image'
         layout='fixed'
         formats={['auto', 'webp', 'avif']}
-        src='../../images/jongyun.png'
+        src='../../images/평온.svg'
         width={70}
         height={70}
         quality={95}

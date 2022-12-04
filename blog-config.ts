@@ -1,6 +1,6 @@
 const config = {
-  title: 'Jongyun Blog',     // Blog name
-  author: 'Jongyunha', // Your name
+  title: 'Tech Blog',     // Blog name
+  author: 'Jongyun', // Your name
   description: 'Kakaostyle',
   siteUrl: 'https://gatsby-starter-lavender.vercel.app',
   thumbnail: '/thumbnails/jongyun.png',  // Default blog thumbnail. i.e. '/thumbnails/main.png'
