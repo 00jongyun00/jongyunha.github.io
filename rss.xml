@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Dec 2022 13:13:12 GMT</lastBuildDate><item><title><![CDATA[Jenkins 로 spring boot appliation 배포 pipeline 만들기]]></title><description><![CDATA[Start Jenkins 가 설치되어있다는 가정하에 시작합니다. Jenkins 설치하기 Plugin 설치하기 설치해야 할 플러그인 목록들 gradle plugins (jar 파일을 만들기 위함) post build task (build…]]></description><link>https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</guid><pubDate>Sat, 17 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;start&quot; style=&quot;position:relative;&quot;&gt;Start&lt;a href=&quot;#start&quot; aria-label=&quot;start permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Dec 2022 13:16:46 GMT</lastBuildDate><item><title><![CDATA[Deploy spring boot to docker by integrating ansible and jenkins]]></title><description><![CDATA[Start 엔서블이란 ? 규모가 작은 인프라 를 관리할때는 terraform 보다는 ansible 이 좀더 편할 것 같아 ansible 로 선택하여 진행 했습니다. Terraform 과 Ansible 의 차이점 실습환경 ubuntu 18.0…]]></description><link>https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</guid><pubDate>Sun, 18 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;start&quot; style=&quot;position:relative;&quot;&gt;Start&lt;a href=&quot;#start&quot; aria-label=&quot;start permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.redhat.com/ko/technologies/management/ansible/what-is-ansible&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;엔서블이란 ?&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br /&gt;
+&lt;p&gt;규모가 작은 인프라 를 관리할때는 terraform 보다는 ansible 이 좀더 편할 것 같아 ansible 로 선택하여 진행 했습니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://rainbound.tistory.com/entry/Ansible-vs-Terraform-vs-Puppet-%EC%B0%A8%EC%9D%B4%EC%A0%90-%EB%B0%8F-%EC%84%A0%ED%83%9D&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Terraform 과 Ansible 의 차이점&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br /&gt;
+&lt;h2 id=&quot;실습환경&quot; style=&quot;position:relative;&quot;&gt;실습환경&lt;a href=&quot;#%EC%8B%A4%EC%8A%B5%ED%99%98%EA%B2%BD&quot; aria-label=&quot;실습환경 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ubuntu 18.04&lt;/li&gt;
+&lt;li&gt;naver cloud&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;에서 진행 했습니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;h2 id=&quot;구성&quot; style=&quot;position:relative;&quot;&gt;구성&lt;a href=&quot;#%EA%B5%AC%EC%84%B1&quot; aria-label=&quot;구성 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Jenkins 서버&lt;/li&gt;
+&lt;li&gt;Ansible 서버&lt;/li&gt;
+&lt;li&gt;application 을 배포할 서버&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;다음과 같은 서버를 구성 하실 때 모두 한 서버에 구성 하셔도 상관 없고 각각 다른 서버로 구성하셔도 상관 없습니다.&lt;/p&gt;
+&lt;h2 id=&quot;ansible-설치&quot; style=&quot;position:relative;&quot;&gt;Ansible 설치&lt;a href=&quot;#ansible-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;ansible 설치 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;br /&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; update
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; software-properties-common
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; add-apt-repository &lt;span class=&quot;token parameter variable&quot;&gt;--yes&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--update&lt;/span&gt; ppa:ansible/ansible
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; ansible&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ansible 이 정상적으로 설치가 끝나셨다면 hosts 파일에 ansible 의 playbook 을 적용할 서버에 대한 ip 를 작성 합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;vi /etc/ansible/hosts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[devops]
+172.0.17.1 ansible_port=20022&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ansible_port 를 이용하여 port 를 지정 하실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;정상적으로 서버와 통신 할 수 있는지 ping 체크를 해보겠습니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;ansible devops &lt;span class=&quot;token parameter variable&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ping&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;./images/ping%20test.png&quot; alt=&quot;ping-test&quot;&gt;&lt;/p&gt;
+&lt;p&gt;FAIL 이 발생 하신다면 해당 서버의 host 나 port 를 확인 해주시면 됩니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;h2 id=&quot;jenkins-에-ansible-ssh-server-등록&quot; style=&quot;position:relative;&quot;&gt;Jenkins 에 Ansible ssh server 등록&lt;a href=&quot;#jenkins-%EC%97%90-ansible-ssh-server-%EB%93%B1%EB%A1%9D&quot; aria-label=&quot;jenkins 에 ansible ssh server 등록 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;br /&gt;
+&lt;p&gt;jenkins plugin publish over ssh 를 설치 하신뒤 ansible 서버를 추가합니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/89162a6153417d98939e9d387f6b5f81/49832/jenkins-ssh-server.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.0253164556962%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA40lEQVQoz6WSPw/CIBDF+/0/hrO7o4uTm4uLgzFx659IqW0POJ45arFpjBYleSRcyI/3uMu89yiKEnleoG07yJLaUjlmMHM8Z7JprdE0DZxz+GcFoNDLsoJSKgD5+eInOTc4arseh9MFx/MV7H2AToA1jLWwCyT3PDMqpbHa7LDe7kP0CJS/I2NCUVx+F8c007gxct9TvJQqMzoegeKKyCR1di5mH91mY8uH4g+ajE4Ayna/t7jdFIyxTzgngmdzKB0mouShfqcALMoKtdbD5MtnS7dTRPSKLBCBqboOMPujRuADzgCyEx8DXhMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;added-ansible-server&quot;
+        title=&quot;added-ansible-server&quot;
+        src=&quot;/static/89162a6153417d98939e9d387f6b5f81/f058b/jenkins-ssh-server.png&quot;
+        srcset=&quot;/static/89162a6153417d98939e9d387f6b5f81/c26ae/jenkins-ssh-server.png 158w,
+/static/89162a6153417d98939e9d387f6b5f81/6bdcf/jenkins-ssh-server.png 315w,
+/static/89162a6153417d98939e9d387f6b5f81/f058b/jenkins-ssh-server.png 630w,
+/static/89162a6153417d98939e9d387f6b5f81/40601/jenkins-ssh-server.png 945w,
+/static/89162a6153417d98939e9d387f6b5f81/78612/jenkins-ssh-server.png 1260w,
+/static/89162a6153417d98939e9d387f6b5f81/49832/jenkins-ssh-server.png 2374w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;a href=&quot;https://jongyunha.github.io/jenkins/2022-12-17/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Jenkins 로 Spring boot 배포하기&lt;/a&gt;
+를 참고하여 마지막 Exec command 부분 만 변경 해보겠습니다.&lt;/p&gt;
+&lt;p&gt;그전에 먼저 ansible playbook yml 파일 을 작성 하겠습니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h2 id=&quot;ansible-playbook&quot; style=&quot;position:relative;&quot;&gt;Ansible playbook&lt;a href=&quot;#ansible-playbook&quot; aria-label=&quot;ansible playbook permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;먼저 docker file 을 build 하여 public repository 에 push 한뒤 image 를 pull 받아서 docker run 을 하는 방식으로 구성 하겠습니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;p&gt;create-docker-image.yml&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; devops
+  &lt;span class=&quot;token key atrule&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Build a docker image with deployed jar file
+      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker build &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;t spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app .
+      &lt;span class=&quot;token key atrule&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; /root
+    
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Docker login
+      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker login &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;u &quot;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; DOCKER_ID &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&quot; &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;p &quot;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; DOCKER_PASSWORD &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&quot;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Push the image on Docker hub
+      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker push docker_id/spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;p&gt;build-docker-image.yml&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; devops
+  &lt;span class=&quot;token key atrule&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; stop current running container
+      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker stop spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app
+      &lt;span class=&quot;token key atrule&quot;&gt;ignore_errors&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; yes
+    
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; remove stopped container
+      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker rm spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app
+      &lt;span class=&quot;token key atrule&quot;&gt;ignore_errors&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; yes
+
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; pull the newest docker image from docker hub 
+      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker pull docker&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;id/spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest
+
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Create container using spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app image
+      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker run &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;d &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;name spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;p 8080&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;8080 docker&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;id/spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;p&gt;해당 두 파일을 다음과 같은 경로에 만들어 주겠습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; ~/ansible
+&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; ~/ansible/create-docker-image.yml
+&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; ~/ansible/build-docker-image.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;jenkins-exec-command-설정&quot; style=&quot;position:relative;&quot;&gt;Jenkins Exec command 설정&lt;a href=&quot;#jenkins-exec-command-%EC%84%A4%EC%A0%95&quot; aria-label=&quot;jenkins exec command 설정 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ansible &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ansible-playbook create-docker-image.yml&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ansible-playbook build-docker-image.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/942e8fdeba38653301cb02f97e87ff39/9d5da/jenkins-exec.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.9620253164557%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNklEQVQoz6WSy07DQAxF899IfANb+AXYsegCiV1ZRF3DoqVSmyKVliY0z5mxxxd50iQ8BIJi6SiTScb3ju2IvUdV1Vivn7HZbFEUJbz38CLts0e+wUNE4IjCOiLm8JKmGaxzYZOIB/h3dGcjZoYxFvt9jjTLYK2FhigiYPbQfwbXX9FQ8Tbh4cqzxzmm0xkWiyWWywRJssJq9RScK40xQUDE90AEhgn3xcvgMFgmCi6bxqCumyDQ4Rz1qAvjFP8ORs0ufO8TGuuQveqV9yjLGta4IDCItEK6Tgvq2eWEvOaPV+4Kr4nyogqbx0SfUDtsHbX1wedR+YmhKXqWDo2L2n4Cu12GzTZFUVahpn9Fp0PrGMUPc5ycX2GWrEOtdEz+E9Hl9QinZxcY3dxiPL5DHMeYTCZH8wb4oVGovVmrlgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;jenkins-exec-command&quot;
+        title=&quot;jenkins-exec-command&quot;
+        src=&quot;/static/942e8fdeba38653301cb02f97e87ff39/f058b/jenkins-exec.png&quot;
+        srcset=&quot;/static/942e8fdeba38653301cb02f97e87ff39/c26ae/jenkins-exec.png 158w,
+/static/942e8fdeba38653301cb02f97e87ff39/6bdcf/jenkins-exec.png 315w,
+/static/942e8fdeba38653301cb02f97e87ff39/f058b/jenkins-exec.png 630w,
+/static/942e8fdeba38653301cb02f97e87ff39/9d5da/jenkins-exec.png 871w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;다음과 같이 설정한후 Save &gt; Build now 를 해주시면 성공적으로 Ansible 을 통해 build 가 된것을 확인해 보실 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Jenkins 로 spring boot appliation 배포 pipeline 만들기]]></title><description><![CDATA[Start Jenkins 가 설치되어있다는 가정하에 시작합니다. Jenkins 설치하기 Plugin 설치하기 설치해야 할 플러그인 목록들 gradle plugins (jar 파일을 만들기 위함) post build task (build…]]></description><link>https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</guid><pubDate>Sat, 17 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;start&quot; style=&quot;position:relative;&quot;&gt;Start&lt;a href=&quot;#start&quot; aria-label=&quot;start permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Jenkins 가 설치되어있다는 가정하에 시작합니다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -342,175 +510,7 @@
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;다음과 같이 결과를 console output 에서 보실수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Deploy spring boot to docker by integrating ansible and jenkins]]></title><description><![CDATA[Start 엔서블이란 ? 규모가 작은 인프라 를 관리할때는 terraform 보다는 ansible 이 좀더 편할 것 같아 ansible 로 선택하여 진행 했습니다. Terraform 과 Ansible 의 차이점 실습환경 ubuntu 18.0…]]></description><link>https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</guid><pubDate>Sat, 17 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;start&quot; style=&quot;position:relative;&quot;&gt;Start&lt;a href=&quot;#start&quot; aria-label=&quot;start permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.redhat.com/ko/technologies/management/ansible/what-is-ansible&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;엔서블이란 ?&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;br /&gt;
-&lt;p&gt;규모가 작은 인프라 를 관리할때는 terraform 보다는 ansible 이 좀더 편할 것 같아 ansible 로 선택하여 진행 했습니다.&lt;/p&gt;
-&lt;br /&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://rainbound.tistory.com/entry/Ansible-vs-Terraform-vs-Puppet-%EC%B0%A8%EC%9D%B4%EC%A0%90-%EB%B0%8F-%EC%84%A0%ED%83%9D&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Terraform 과 Ansible 의 차이점&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;br /&gt;
-&lt;h2 id=&quot;실습환경&quot; style=&quot;position:relative;&quot;&gt;실습환경&lt;a href=&quot;#%EC%8B%A4%EC%8A%B5%ED%99%98%EA%B2%BD&quot; aria-label=&quot;실습환경 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;ubuntu 18.04&lt;/li&gt;
-&lt;li&gt;naver cloud&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;에서 진행 했습니다.&lt;/p&gt;
-&lt;br /&gt;
-&lt;h2 id=&quot;구성&quot; style=&quot;position:relative;&quot;&gt;구성&lt;a href=&quot;#%EA%B5%AC%EC%84%B1&quot; aria-label=&quot;구성 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Jenkins 서버&lt;/li&gt;
-&lt;li&gt;Ansible 서버&lt;/li&gt;
-&lt;li&gt;application 을 배포할 서버&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;다음과 같은 서버를 구성 하실 때 모두 한 서버에 구성 하셔도 상관 없고 각각 다른 서버로 구성하셔도 상관 없습니다.&lt;/p&gt;
-&lt;h2 id=&quot;ansible-설치&quot; style=&quot;position:relative;&quot;&gt;Ansible 설치&lt;a href=&quot;#ansible-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;ansible 설치 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;br /&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; update
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; software-properties-common
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; add-apt-repository &lt;span class=&quot;token parameter variable&quot;&gt;--yes&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--update&lt;/span&gt; ppa:ansible/ansible
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; ansible&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;ansible 이 정상적으로 설치가 끝나셨다면 hosts 파일에 ansible 의 playbook 을 적용할 서버에 대한 ip 를 작성 합니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;vi /etc/ansible/hosts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br /&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[devops]
-172.0.17.1 ansible_port=20022&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;ansible_port 를 이용하여 port 를 지정 하실 수 있습니다.&lt;/p&gt;
-&lt;p&gt;정상적으로 서버와 통신 할 수 있는지 ping 체크를 해보겠습니다.&lt;/p&gt;
-&lt;br /&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;ansible devops &lt;span class=&quot;token parameter variable&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ping&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br /&gt;
-&lt;p&gt;&lt;img src=&quot;./images/ping%20test.png&quot; alt=&quot;ping-test&quot;&gt;&lt;/p&gt;
-&lt;p&gt;FAIL 이 발생 하신다면 해당 서버의 host 나 port 를 확인 해주시면 됩니다.&lt;/p&gt;
-&lt;br /&gt;
-&lt;h2 id=&quot;jenkins-에-ansible-ssh-server-등록&quot; style=&quot;position:relative;&quot;&gt;Jenkins 에 Ansible ssh server 등록&lt;a href=&quot;#jenkins-%EC%97%90-ansible-ssh-server-%EB%93%B1%EB%A1%9D&quot; aria-label=&quot;jenkins 에 ansible ssh server 등록 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;br /&gt;
-&lt;p&gt;jenkins plugin publish over ssh 를 설치 하신뒤 ansible 서버를 추가합니다.&lt;/p&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/89162a6153417d98939e9d387f6b5f81/49832/jenkins-ssh-server.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 62.0253164556962%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA40lEQVQoz6WSPw/CIBDF+/0/hrO7o4uTm4uLgzFx659IqW0POJ45arFpjBYleSRcyI/3uMu89yiKEnleoG07yJLaUjlmMHM8Z7JprdE0DZxz+GcFoNDLsoJSKgD5+eInOTc4arseh9MFx/MV7H2AToA1jLWwCyT3PDMqpbHa7LDe7kP0CJS/I2NCUVx+F8c007gxct9TvJQqMzoegeKKyCR1di5mH91mY8uH4g+ajE4Ayna/t7jdFIyxTzgngmdzKB0mouShfqcALMoKtdbD5MtnS7dTRPSKLBCBqboOMPujRuADzgCyEx8DXhMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;added-ansible-server&quot;
-        title=&quot;added-ansible-server&quot;
-        src=&quot;/static/89162a6153417d98939e9d387f6b5f81/f058b/jenkins-ssh-server.png&quot;
-        srcset=&quot;/static/89162a6153417d98939e9d387f6b5f81/c26ae/jenkins-ssh-server.png 158w,
-/static/89162a6153417d98939e9d387f6b5f81/6bdcf/jenkins-ssh-server.png 315w,
-/static/89162a6153417d98939e9d387f6b5f81/f058b/jenkins-ssh-server.png 630w,
-/static/89162a6153417d98939e9d387f6b5f81/40601/jenkins-ssh-server.png 945w,
-/static/89162a6153417d98939e9d387f6b5f81/78612/jenkins-ssh-server.png 1260w,
-/static/89162a6153417d98939e9d387f6b5f81/49832/jenkins-ssh-server.png 2374w&quot;
-        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;p&gt;&lt;a href=&quot;https://jongyunha.github.io/jenkins/2022-12-17/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Jenkins 로 Spring boot 배포하기&lt;/a&gt;
-를 참고하여 마지막 Exec command 부분 만 변경 해보겠습니다.&lt;/p&gt;
-&lt;p&gt;그전에 먼저 ansible playbook yml 파일 을 작성 하겠습니다.&lt;/p&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;h2 id=&quot;ansible-playbook&quot; style=&quot;position:relative;&quot;&gt;Ansible playbook&lt;a href=&quot;#ansible-playbook&quot; aria-label=&quot;ansible playbook permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;먼저 docker file 을 build 하여 public repository 에 push 한뒤 image 를 pull 받아서 docker run 을 하는 방식으로 구성 하겠습니다.&lt;/p&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;p&gt;create-docker-image.yml&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; devops
-  &lt;span class=&quot;token key atrule&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Build a docker image with deployed jar file
-      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker build &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;t spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app .
-      &lt;span class=&quot;token key atrule&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;token key atrule&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; /root
-    
-    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Docker login
-      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker login &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;u &quot;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; DOCKER_ID &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&quot; &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;p &quot;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; DOCKER_PASSWORD &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&quot;
-
-    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Push the image on Docker hub
-      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker push docker_id/spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;p&gt;build-docker-image.yml&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; devops
-  &lt;span class=&quot;token key atrule&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; stop current running container
-      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker stop spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app
-      &lt;span class=&quot;token key atrule&quot;&gt;ignore_errors&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; yes
-    
-    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; remove stopped container
-      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker rm spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app
-      &lt;span class=&quot;token key atrule&quot;&gt;ignore_errors&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; yes
-
-    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; pull the newest docker image from docker hub 
-      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker pull docker&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;id/spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest
-
-    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Create container using spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app image
-      &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; docker run &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;d &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;name spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;p 8080&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;8080 docker&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;id/spring&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;p&gt;해당 두 파일을 다음과 같은 경로에 만들어 주겠습니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; ~/ansible
-&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; ~/ansible/create-docker-image.yml
-&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; ~/ansible/build-docker-image.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;jenkins-exec-command-설정&quot; style=&quot;position:relative;&quot;&gt;Jenkins Exec command 설정&lt;a href=&quot;#jenkins-exec-command-%EC%84%A4%EC%A0%95&quot; aria-label=&quot;jenkins exec command 설정 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ansible &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ansible-playbook create-docker-image.yml&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-ansible-playbook build-docker-image.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/942e8fdeba38653301cb02f97e87ff39/9d5da/jenkins-exec.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 56.9620253164557%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNklEQVQoz6WSy07DQAxF899IfANb+AXYsegCiV1ZRF3DoqVSmyKVliY0z5mxxxd50iQ8BIJi6SiTScb3ju2IvUdV1Vivn7HZbFEUJbz38CLts0e+wUNE4IjCOiLm8JKmGaxzYZOIB/h3dGcjZoYxFvt9jjTLYK2FhigiYPbQfwbXX9FQ8Tbh4cqzxzmm0xkWiyWWywRJssJq9RScK40xQUDE90AEhgn3xcvgMFgmCi6bxqCumyDQ4Rz1qAvjFP8ORs0ufO8TGuuQveqV9yjLGta4IDCItEK6Tgvq2eWEvOaPV+4Kr4nyogqbx0SfUDtsHbX1wedR+YmhKXqWDo2L2n4Cu12GzTZFUVahpn9Fp0PrGMUPc5ycX2GWrEOtdEz+E9Hl9QinZxcY3dxiPL5DHMeYTCZH8wb4oVGovVmrlgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;jenkins-exec-command&quot;
-        title=&quot;jenkins-exec-command&quot;
-        src=&quot;/static/942e8fdeba38653301cb02f97e87ff39/f058b/jenkins-exec.png&quot;
-        srcset=&quot;/static/942e8fdeba38653301cb02f97e87ff39/c26ae/jenkins-exec.png 158w,
-/static/942e8fdeba38653301cb02f97e87ff39/6bdcf/jenkins-exec.png 315w,
-/static/942e8fdeba38653301cb02f97e87ff39/f058b/jenkins-exec.png 630w,
-/static/942e8fdeba38653301cb02f97e87ff39/9d5da/jenkins-exec.png 871w&quot;
-        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;다음과 같이 설정한후 Save &gt; Build now 를 해주시면 성공적으로 Ansible 을 통해 build 가 된것을 확인해 보실 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Leetcode 40. Combination Sum II]]></title><description><![CDATA[Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the…]]></description><link>https://gatsby-starter-lavender.vercel.app/leetcode/40/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/leetcode/40/</guid><pubDate>Fri, 16 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.&lt;/p&gt;
+&lt;p&gt;다음과 같이 결과를 console output 에서 보실수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Leetcode 40. Combination Sum II]]></title><description><![CDATA[Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the…]]></description><link>https://gatsby-starter-lavender.vercel.app/leetcode/40/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/leetcode/40/</guid><pubDate>Fri, 16 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.&lt;/p&gt;
 &lt;p&gt;Each number in candidates may only be used once in the combination.&lt;/p&gt;
 &lt;p&gt;Note: The solution set must not contain duplicate combinations.&lt;/p&gt;
 &lt;p&gt;Example 1:&lt;/p&gt;
