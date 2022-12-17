@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Dec 2022 13:16:46 GMT</lastBuildDate><item><title><![CDATA[Deploy spring boot to docker by integrating ansible and jenkins]]></title><description><![CDATA[Start 엔서블이란 ? 규모가 작은 인프라 를 관리할때는 terraform 보다는 ansible 이 좀더 편할 것 같아 ansible 로 선택하여 진행 했습니다. Terraform 과 Ansible 의 차이점 실습환경 ubuntu 18.0…]]></description><link>https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</guid><pubDate>Sun, 18 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;start&quot; style=&quot;position:relative;&quot;&gt;Start&lt;a href=&quot;#start&quot; aria-label=&quot;start permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Dec 2022 13:17:30 GMT</lastBuildDate><item><title><![CDATA[Deploy spring boot to docker by integrating ansible and jenkins]]></title><description><![CDATA[Start 엔서블이란 ? 규모가 작은 인프라 를 관리할때는 terraform 보다는 ansible 이 좀더 편할 것 같아 ansible 로 선택하여 진행 했습니다. Terraform 과 Ansible 의 차이점 실습환경 ubuntu 18.0…]]></description><link>https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/ansible/2022-12-17/</guid><pubDate>Sun, 18 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;start&quot; style=&quot;position:relative;&quot;&gt;Start&lt;a href=&quot;#start&quot; aria-label=&quot;start permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.redhat.com/ko/technologies/management/ansible/what-is-ansible&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;엔서블이란 ?&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -39,7 +39,37 @@
 &lt;br /&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;ansible devops &lt;span class=&quot;token parameter variable&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ping&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;br /&gt;
-&lt;p&gt;&lt;img src=&quot;./images/ping%20test.png&quot; alt=&quot;ping-test&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/346d79aee9a12abe63538f563d74c752/136a2/ping-test.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 27.21518987341772%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA9ElEQVQY05WPS0vDQBhF+/8RQRQ3rhQXgoIIgviAbEXwAW1EY8xkknll0swE2kJ3R5rWgksXh8t3uFz4Rns7B+zvHnJ8dMrZyQXjl5QiF6STlO9MUGY1qnBY6fFmipHN+q48tmoJXSTGnhACXdcxSpKE24cbru8vubo75/n9kVS88iknCP1FbUtca2hai3IV7dTjpw3W6wHT6K1fjY6WyyWzxYz5Yk4b1kVlK4xTQ9am3KbUBb5tsI2htnKgMgJp1n4YDF0Yim/ZEx9ijNQ5WTlGO0Ufe2KIW/rNa+HXxb9+eNk4jTYKUedYZ8iVQNiauCn8lx+DDGz4MSRXIwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;ping-test&quot;
+        title=&quot;ping-test&quot;
+        src=&quot;/static/346d79aee9a12abe63538f563d74c752/f058b/ping-test.png&quot;
+        srcset=&quot;/static/346d79aee9a12abe63538f563d74c752/c26ae/ping-test.png 158w,
+/static/346d79aee9a12abe63538f563d74c752/6bdcf/ping-test.png 315w,
+/static/346d79aee9a12abe63538f563d74c752/f058b/ping-test.png 630w,
+/static/346d79aee9a12abe63538f563d74c752/136a2/ping-test.png 884w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;FAIL 이 발생 하신다면 해당 서버의 host 나 port 를 확인 해주시면 됩니다.&lt;/p&gt;
 &lt;br /&gt;
 &lt;h2 id=&quot;jenkins-에-ansible-ssh-server-등록&quot; style=&quot;position:relative;&quot;&gt;Jenkins 에 Ansible ssh server 등록&lt;a href=&quot;#jenkins-%EC%97%90-ansible-ssh-server-%EB%93%B1%EB%A1%9D&quot; aria-label=&quot;jenkins 에 ansible ssh server 등록 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
