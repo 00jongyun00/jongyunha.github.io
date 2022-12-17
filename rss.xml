@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Dec 2022 06:49:05 GMT</lastBuildDate><item><title><![CDATA[Jenkins 로 spring boot appliation 배포 pipeline 만들기 Part.1]]></title><description><![CDATA[Part.1 Jenkins 가 설치되어있다는 가정하에 시작합니다. Jenkins 설치하기 Plugin 설치하기 설치해야 할 플러그인 목록들 gradle plugins (jar 파일을 만들기 위함) post build task (build…]]></description><link>https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</guid><pubDate>Sat, 17 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;part1&quot; style=&quot;position:relative;&quot;&gt;Part.1&lt;a href=&quot;#part1&quot; aria-label=&quot;part1 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Dec 2022 07:13:53 GMT</lastBuildDate><item><title><![CDATA[Jenkins 로 spring boot appliation 배포 pipeline 만들기]]></title><description><![CDATA[Start Jenkins 가 설치되어있다는 가정하에 시작합니다. Jenkins 설치하기 Plugin 설치하기 설치해야 할 플러그인 목록들 gradle plugins (jar 파일을 만들기 위함) post build task (build…]]></description><link>https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</guid><pubDate>Sat, 17 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;start&quot; style=&quot;position:relative;&quot;&gt;Start&lt;a href=&quot;#start&quot; aria-label=&quot;start permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Jenkins 가 설치되어있다는 가정하에 시작합니다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -291,7 +291,58 @@
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;설정이 모두 완료되었습니다. Save 를 하신뒤 Build now 를 하시게 되면 SSH 서버의 해당 Dir 에 build 된 jar 파일이 copy 된걸 확인해보실수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Leetcode 40. Combination Sum II]]></title><description><![CDATA[Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the…]]></description><link>https://gatsby-starter-lavender.vercel.app/leetcode/40/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/leetcode/40/</guid><pubDate>Fri, 16 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.&lt;/p&gt;
+&lt;p&gt;마지막으로 해당 File 이 Copy 가 완료되면 ssh 의 서버에 docker 명령어를 통해 docker image 로 build 후 실행 합니다.&lt;/p&gt;
+&lt;p&gt;Exec command 안에 다음과 같이 작성합니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; build_output &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; build &lt;span class=&quot;token parameter variable&quot;&gt;--tag&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;spring-app &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; Dockerfile &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;:8080 &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; spring-app spring-app:latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dockerfile&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;docker&quot;&gt;&lt;pre class=&quot;language-docker&quot;&gt;&lt;code class=&quot;language-docker&quot;&gt;&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; adoptopenjdk/openjdk11&lt;/span&gt;
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;MAINTAINER&lt;/span&gt; JongyunHa&lt;/span&gt;
+
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;ENV&lt;/span&gt; TZ &lt;span class=&quot;token string&quot;&gt;&quot;Asia/Seoul&quot;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; api.jar api.jar&lt;/span&gt;
+
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;EXPOSE&lt;/span&gt; 8080&lt;/span&gt;
+
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;ENTRYPOINT&lt;/span&gt; [&lt;span class=&quot;token string&quot;&gt;&quot;java&quot;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&quot;-jar&quot;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&quot;-Dspring.profiles.active=dev&quot;&lt;/span&gt;, &lt;span class=&quot;token string&quot;&gt;&quot;/api.jar&quot;&lt;/span&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Build now 를 하시게 되면&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5962481c17cc9facfaffa9914abd0634/b2313/build-output.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.53164556962025%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA0UlEQVQoz52S2w6DIBBE/f8frLZ4QYMKGMX74zS7jU2oTVN8mPDA5mRmZ6M0zSClRFlWqOsGbduiaVoYY+DciGmaMI6v95doZlkWRARUSsEYi2EY+MM594b8A/OAQqRIkjuKQqLv+9NQsEMhMsRxwsCu6/jj0CWHFDnLclhrL4G+Ah8PASlLLoT2dwyEQD0gxdVac+TP/QUD6WSUqrkQcnel4ZNDipvnBYtuMNSdB7zdYt4hFVNVFaz1mw7RPM+ItDYcl+jbtmFdV+/9VzS/7zueVulDy6uYwMcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;build-output&quot;
+        title=&quot;build-output&quot;
+        src=&quot;/static/5962481c17cc9facfaffa9914abd0634/f058b/build-output.png&quot;
+        srcset=&quot;/static/5962481c17cc9facfaffa9914abd0634/c26ae/build-output.png 158w,
+/static/5962481c17cc9facfaffa9914abd0634/6bdcf/build-output.png 315w,
+/static/5962481c17cc9facfaffa9914abd0634/f058b/build-output.png 630w,
+/static/5962481c17cc9facfaffa9914abd0634/40601/build-output.png 945w,
+/static/5962481c17cc9facfaffa9914abd0634/78612/build-output.png 1260w,
+/static/5962481c17cc9facfaffa9914abd0634/b2313/build-output.png 2700w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;다음과 같이 결과를 console output 에서 보실수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Leetcode 40. Combination Sum II]]></title><description><![CDATA[Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the…]]></description><link>https://gatsby-starter-lavender.vercel.app/leetcode/40/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/leetcode/40/</guid><pubDate>Fri, 16 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.&lt;/p&gt;
 &lt;p&gt;Each number in candidates may only be used once in the combination.&lt;/p&gt;
 &lt;p&gt;Note: The solution set must not contain duplicate combinations.&lt;/p&gt;
 &lt;p&gt;Example 1:&lt;/p&gt;
