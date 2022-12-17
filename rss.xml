@@ -1,4 +1,298 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 16 Dec 2022 07:45:43 GMT</lastBuildDate><item><title><![CDATA[Leetcode 40. Combination Sum II]]></title><description><![CDATA[Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the…]]></description><link>https://gatsby-starter-lavender.vercel.app/leetcode/40/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/leetcode/40/</guid><pubDate>Fri, 16 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Lavendar RSS Feed]]></title><description><![CDATA[Kakaostyle]]></description><link>https://gatsby-starter-lavender.vercel.app</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Dec 2022 06:45:12 GMT</lastBuildDate><item><title><![CDATA[Jenkins 로 spring boot appliation 배포 pipeline 만들기 Part.1]]></title><description><![CDATA[Part.1 Jenkins 가 설치되어있다는 가정하에 시작합니다. Plugin 설치하기 설치해야 할 플러그인 목록들 gradle plugins (jar 파일을 만들기 위함) post build task (build 가 성공 후 action task…]]></description><link>https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/jenkins/2022-12-17/</guid><pubDate>Sat, 17 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;part1&quot; style=&quot;position:relative;&quot;&gt;Part.1&lt;a href=&quot;#part1&quot; aria-label=&quot;part1 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jenkins 가 설치되어있다는 가정하에 시작합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br/&gt;
+[Jenkins 설치하기](https://hudi.blog/install-jenkins-with-docker-on-ec2/)
+&lt;h2 id=&quot;plugin-설치하기&quot; style=&quot;position:relative;&quot;&gt;Plugin 설치하기&lt;a href=&quot;#plugin-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;plugin 설치하기 permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;설치해야 할 플러그인 목록들&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gradle plugins (jar 파일을 만들기 위함)&lt;/li&gt;
+&lt;li&gt;post build task (build 가 성공 후 action task 를 지정)&lt;/li&gt;
+&lt;li&gt;publish over ssh (ssh 서버 접속 및 명령어)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4471badaecb0e00855f5d8ab007e51ee/e4152/jenkins-gradle.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30.37974683544304%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAvklEQVQY04WRbY+CMBCE+///5MUQNBRBivRtC30ureeFKNFJJv2w09nZXRVCQER4YhxvLNaRM6zrxrodc9syOb9Tdd2VprlgbSDGlVOr+Wk0l36m7SZabR7vH8/acDqP3IytAV6NlTF3tL7ifayCaXb0w702WAoXj3MR7+WfzgshCDEmRBL9MFWNxITauxf4kBimBTNbrI9Y60gp1drreCVdQdMNxChlRyh2eJoe4Whf+yBVA+8Jv3361Kxc8hctkNZ6BxoUjwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;gradle&quot;
+        title=&quot;gradle&quot;
+        src=&quot;/static/4471badaecb0e00855f5d8ab007e51ee/f058b/jenkins-gradle.png&quot;
+        srcset=&quot;/static/4471badaecb0e00855f5d8ab007e51ee/c26ae/jenkins-gradle.png 158w,
+/static/4471badaecb0e00855f5d8ab007e51ee/6bdcf/jenkins-gradle.png 315w,
+/static/4471badaecb0e00855f5d8ab007e51ee/f058b/jenkins-gradle.png 630w,
+/static/4471badaecb0e00855f5d8ab007e51ee/40601/jenkins-gradle.png 945w,
+/static/4471badaecb0e00855f5d8ab007e51ee/78612/jenkins-gradle.png 1260w,
+/static/4471badaecb0e00855f5d8ab007e51ee/e4152/jenkins-gradle.png 3434w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2c95220328e9eecf03aa88ff8ba9d71c/f7171/jenkins-post-task.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 25.316455696202528%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAsklEQVQY022O247CMAwF+/8fuQ/RAmoK6S1uLk0yq6aihYUjjeyHo7GbEAIbzxjTM1uhlEJK+ZO8z5xz7exw7M393qPUFRFPCAl17fhRLbdu4tKOXPS4z3bY0SPqZugnqQ/kXF7EhcZaQesO53wtjPOCfsxYcQfbMefiG95HQlgr3WPAucAaEw2c9i3OR8xgGSaLiLAsC977rXb2yvtXv9oQ40pJVXjmKf2W8k/yytEB/gDju4brnAMGtQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;post-task&quot;
+        title=&quot;post-task&quot;
+        src=&quot;/static/2c95220328e9eecf03aa88ff8ba9d71c/f058b/jenkins-post-task.png&quot;
+        srcset=&quot;/static/2c95220328e9eecf03aa88ff8ba9d71c/c26ae/jenkins-post-task.png 158w,
+/static/2c95220328e9eecf03aa88ff8ba9d71c/6bdcf/jenkins-post-task.png 315w,
+/static/2c95220328e9eecf03aa88ff8ba9d71c/f058b/jenkins-post-task.png 630w,
+/static/2c95220328e9eecf03aa88ff8ba9d71c/40601/jenkins-post-task.png 945w,
+/static/2c95220328e9eecf03aa88ff8ba9d71c/78612/jenkins-post-task.png 1260w,
+/static/2c95220328e9eecf03aa88ff8ba9d71c/f7171/jenkins-post-task.png 3456w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/07e411adabcf9c30d22ca8c762f4b018/f7171/jenkins-ssh.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 22.78481012658228%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAk0lEQVQY051QywrDMAzL//9jD2OjtGxJ0zSZnadGQrPusB42gbARRpYtmBkdRAwpVetLKX9RDMMFWlswJxB5KKXhHIN9BHP4SqKAENJ7cUczHMcJxmyoeowJajGwlsDkTw0Pxma8Gge9bgg+QvSoFTln3OYV08PgSX7Xzs+r8xX3xeA6yzoM8Rm3p681//C3wwN4AVjBiQE1+RxZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;ssh&quot;
+        title=&quot;ssh&quot;
+        src=&quot;/static/07e411adabcf9c30d22ca8c762f4b018/f058b/jenkins-ssh.png&quot;
+        srcset=&quot;/static/07e411adabcf9c30d22ca8c762f4b018/c26ae/jenkins-ssh.png 158w,
+/static/07e411adabcf9c30d22ca8c762f4b018/6bdcf/jenkins-ssh.png 315w,
+/static/07e411adabcf9c30d22ca8c762f4b018/f058b/jenkins-ssh.png 630w,
+/static/07e411adabcf9c30d22ca8c762f4b018/40601/jenkins-ssh.png 945w,
+/static/07e411adabcf9c30d22ca8c762f4b018/78612/jenkins-ssh.png 1260w,
+/static/07e411adabcf9c30d22ca8c762f4b018/f7171/jenkins-ssh.png 3456w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;plugin 이 모두 설치 되었으면 gradle 설치를 합니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3ee130897377ddf3fd6b34481fa43416/f24c5/install-gradle.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.30379746835443%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAoUlEQVQoz6WRWw6DMAwEuf9NK1XIeQFxbG8V8yh/LRBp5R9rNOsMKRUQRfQZY0bOBcwC5nYrAwDUyiAKUFWY4dE7ASO4tQ1qt7MBK0JMUDO0Jg6+ki7URQ7Daal4vUdQCJjnZV26cLfK7DIHUFQRYwIRObCrq5ov/UrfldZ8OnDvnsuEMs3rgghE9O/0M9nZsPdfKnvVOx+xm34rixxVn+YDWGfGu/kH6kQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;install-gradle&quot;
+        title=&quot;install-gradle&quot;
+        src=&quot;/static/3ee130897377ddf3fd6b34481fa43416/f058b/install-gradle.png&quot;
+        srcset=&quot;/static/3ee130897377ddf3fd6b34481fa43416/c26ae/install-gradle.png 158w,
+/static/3ee130897377ddf3fd6b34481fa43416/6bdcf/install-gradle.png 315w,
+/static/3ee130897377ddf3fd6b34481fa43416/f058b/install-gradle.png 630w,
+/static/3ee130897377ddf3fd6b34481fa43416/40601/install-gradle.png 945w,
+/static/3ee130897377ddf3fd6b34481fa43416/78612/install-gradle.png 1260w,
+/static/3ee130897377ddf3fd6b34481fa43416/f24c5/install-gradle.png 3454w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;gradle 설치가 끝났으면&lt;/p&gt;
+&lt;p&gt;Dashboard &gt; Manage Jenkins &gt; Configure System
+에서 publish over ssh 의 ssh 서버를 추가합니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3ee130897377ddf3fd6b34481fa43416/f24c5/add-ssh-server.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.30379746835443%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAoUlEQVQoz6WRWw6DMAwEuf9NK1XIeQFxbG8V8yh/LRBp5R9rNOsMKRUQRfQZY0bOBcwC5nYrAwDUyiAKUFWY4dE7ASO4tQ1qt7MBK0JMUDO0Jg6+ki7URQ7Daal4vUdQCJjnZV26cLfK7DIHUFQRYwIRObCrq5ov/UrfldZ8OnDvnsuEMs3rgghE9O/0M9nZsPdfKnvVOx+xm34rixxVn+YDWGfGu/kH6kQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;add-ssh-server&quot;
+        title=&quot;add-ssh-server&quot;
+        src=&quot;/static/3ee130897377ddf3fd6b34481fa43416/f058b/add-ssh-server.png&quot;
+        srcset=&quot;/static/3ee130897377ddf3fd6b34481fa43416/c26ae/add-ssh-server.png 158w,
+/static/3ee130897377ddf3fd6b34481fa43416/6bdcf/add-ssh-server.png 315w,
+/static/3ee130897377ddf3fd6b34481fa43416/f058b/add-ssh-server.png 630w,
+/static/3ee130897377ddf3fd6b34481fa43416/40601/add-ssh-server.png 945w,
+/static/3ee130897377ddf3fd6b34481fa43416/78612/add-ssh-server.png 1260w,
+/static/3ee130897377ddf3fd6b34481fa43416/f24c5/add-ssh-server.png 3454w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;item&quot; style=&quot;position:relative;&quot;&gt;Item&lt;a href=&quot;#item&quot; aria-label=&quot;item permalink&quot; class=&quot;heading-anchor after&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;New item &gt; Free style project 를 생성합니다.&lt;/p&gt;
+&lt;p&gt;Git repository 를 추가하고 credentias 와 배포할 branch 를 설정합니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/940c49576505879e7ee62ac02e316273/db7ce/set-up-git.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 67.08860759493672%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA9ElEQVQ4y6VT7ZKEIAzz/V9071blS0AFSvZaxJ87enYmg2Am1jQMMUaM43SCqIKr1rberSGsG0KIp8hTDKN2mJQGEeFQxZMaWEhpDWMscs6gWkX8HiooZVQiDCzAYu/3CG2MPLtlQSkFpdAFFBQi5JRFXDq0boG17nwpRLqHXEoTZCOnWeH18yuHLNrXK+jc1DtkQe5wnjWeFtsnv+zDCut8+8q/htIgsWG/tLEwxol3vW5nsMeGRXiyWht477Ftm3jCJLoI4eYjNrwx1kIpLTcmxIg9JTE752b6VxyctO9tKLxZfECIqxz0CHDIhXwVHJs/Dz8plAG6VFYAtwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;set-up-git&quot;
+        title=&quot;set-up-git&quot;
+        src=&quot;/static/940c49576505879e7ee62ac02e316273/f058b/set-up-git.png&quot;
+        srcset=&quot;/static/940c49576505879e7ee62ac02e316273/c26ae/set-up-git.png 158w,
+/static/940c49576505879e7ee62ac02e316273/6bdcf/set-up-git.png 315w,
+/static/940c49576505879e7ee62ac02e316273/f058b/set-up-git.png 630w,
+/static/940c49576505879e7ee62ac02e316273/40601/set-up-git.png 945w,
+/static/940c49576505879e7ee62ac02e316273/78612/set-up-git.png 1260w,
+/static/940c49576505879e7ee62ac02e316273/db7ce/set-up-git.png 2404w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;build script 를 작성합니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0840f34e475c1bf0ca8c55d14b29d03b/8e6e2/build-script.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 43.67088607594937%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAAApElEQVQoz6VRQQ6DMAzr/18KE5RtLYykSTyldBvXskhWLo5j2SGlhBgXfMbMrqHdB2JGzhmvbYOquGIlqHbA+SIwUQQiwnibcX9msBhKA9DnzlSraNiJMEwPjHHFMGfExEivAnVCB6TtUNyqKkyPjZZGT34+VdQdVsFTbnL61uVQ5BD0YyJGKXK94a8hPVqe5gV53X7t2kWoITAXpLxiJ/7boeMN89PH9t8oROAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;build-script&quot;
+        title=&quot;build-script&quot;
+        src=&quot;/static/0840f34e475c1bf0ca8c55d14b29d03b/f058b/build-script.png&quot;
+        srcset=&quot;/static/0840f34e475c1bf0ca8c55d14b29d03b/c26ae/build-script.png 158w,
+/static/0840f34e475c1bf0ca8c55d14b29d03b/6bdcf/build-script.png 315w,
+/static/0840f34e475c1bf0ca8c55d14b29d03b/f058b/build-script.png 630w,
+/static/0840f34e475c1bf0ca8c55d14b29d03b/40601/build-script.png 945w,
+/static/0840f34e475c1bf0ca8c55d14b29d03b/78612/build-script.png 1260w,
+/static/0840f34e475c1bf0ca8c55d14b29d03b/8e6e2/build-script.png 2438w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;ssh 서버를 통해 해당 *.jar 파일을 copy 합니다.&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6511cdcaef854c14ea961545edea32df/c50e3/ssh-jar-copy.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 76.58227848101265%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAABFUlEQVQ4y52TS26EMBBEuf9Ncofss80+qywZYLCN/92movYAwySbGEsl5DZ+qv64895jHCfMs8K+1nVt13a3Yy5wzkNrA2MWWOdQSkFZ1zYRVXCXM6Hvb1BKI8aIlNIlhweQmDEMYwXt6VaHLeICSvkB5FJgnUdKGdwKOomIn0CtFzgXaqB5bXeEU4FCl/pZa7d0Gxqx/8sMylsNJaC0Rn8bIPVkOdy+/xURIef8dCijMisF6bjs+YIynRxqY2raV5vyCiwFZrEYxgk+hEvu/gCtdRinO2JK9bC1hqIDKE8vxoQQwjFLbSmvr3MoG+mQzKHI+5NcgPUR9yUfysR1TH47TPtL+fz6xtv7B5Q2R/BSY/jh8AeeqZ5ZH7hzkAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;jar-copy&quot;
+        title=&quot;jar-copy&quot;
+        src=&quot;/static/6511cdcaef854c14ea961545edea32df/f058b/ssh-jar-copy.png&quot;
+        srcset=&quot;/static/6511cdcaef854c14ea961545edea32df/c26ae/ssh-jar-copy.png 158w,
+/static/6511cdcaef854c14ea961545edea32df/6bdcf/ssh-jar-copy.png 315w,
+/static/6511cdcaef854c14ea961545edea32df/f058b/ssh-jar-copy.png 630w,
+/static/6511cdcaef854c14ea961545edea32df/40601/ssh-jar-copy.png 945w,
+/static/6511cdcaef854c14ea961545edea32df/78612/ssh-jar-copy.png 1260w,
+/static/6511cdcaef854c14ea961545edea32df/c50e3/ssh-jar-copy.png 2442w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;설정이 모두 완료되었습니다. Save 를 하신뒤 Build now 를 하시게 되면 SSH 서버의 해당 Dir 에 build 된 jar 파일이 copy 된걸 확인해보실수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Leetcode 40. Combination Sum II]]></title><description><![CDATA[Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the…]]></description><link>https://gatsby-starter-lavender.vercel.app/leetcode/40/</link><guid isPermaLink="false">https://gatsby-starter-lavender.vercel.app/leetcode/40/</guid><pubDate>Fri, 16 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.&lt;/p&gt;
 &lt;p&gt;Each number in candidates may only be used once in the combination.&lt;/p&gt;
 &lt;p&gt;Note: The solution set must not contain duplicate combinations.&lt;/p&gt;
 &lt;p&gt;Example 1:&lt;/p&gt;
